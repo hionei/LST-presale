@@ -1,0 +1,141 @@
+.pre-sale-box {
+  background-color: #42424233;
+  border: 1px solid;
+  border-color: #9696966c;
+  border-radius: 5px;
+  .title-bar {
+    padding: 8px 60px;
+
+    background-color: #0000001c;
+    h5 {
+      font-size: 1.3em;
+      font-weight: 600;
+    }
+  }
+
+  .time-left-bar {
+    display: flex;
+    justify-content: flex-end;
+    color: #969696;
+    font-size: 15px;
+  }
+
+  .token-price {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 10px 0 6px 0;
+  }
+
+  .sold-amount {
+    font-size: 16px;
+    font-weight: 600;
+    color: #26b926;
+  }
+}
+
+.amount-input {
+  border: 0;
+  padding: 7px 15px;
+  border: 1px solid #727272;
+
+  border-radius: 3px;
+  position: relative;
+  background: #91919149;
+}
+
+.amount-input ~ .focus-bg:before,
+.amount-input ~ .focus-bg:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background-color: #b8b8b86b;
+  transition: 0.3s;
+  border-radius: 4px;
+  z-index: -1;
+}
+.amount-input:focus ~ .focus-bg:before,
+.has-content.amount-input ~ .focus-bg:before {
+  transition: 0.3s;
+  width: 50%;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+.amount-input ~ .focus-bg:after {
+  left: auto;
+  right: 50%;
+  top: auto;
+  bottom: 50%;
+}
+.amount-input:focus ~ .focus-bg:after,
+.has-content.amount-input ~ .focus-bg:after {
+  transition: 0.3s;
+  width: 50%;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+}
+.amount-input ~ label {
+  font-size: 14px;
+  position: absolute;
+  left: 14px;
+  width: 100%;
+  top: 10px;
+  color: #aaa;
+  transition: 0.3s;
+  z-index: -1;
+  letter-spacing: 0.5px;
+  text-align: start;
+}
+.amount-input:focus ~ label,
+.has-content.amount-input ~ label {
+  top: -18px;
+  left: 0;
+  font-size: 12px;
+  color: #a1a1a1;
+  transition: 0.3s;
+}
+
+input[type="text"] {
+  font: 15px/24px "Muli", sans-serif;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+:focus {
+  outline: none;
+}
+input[type="text"] {
+  font: 15px/24px "Lato", Arial, sans-serif;
+  color: #cccccc;
+  width: 100%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+}
+
+.crypto-option {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
+.crypto-logo {
+  width: 35px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.selected-logo {
+  width: 35px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.input-effect {
+  position: relative;
+}
