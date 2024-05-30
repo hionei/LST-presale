@@ -10,7 +10,7 @@ const Layout = ({ children }: PropsType) => {
   return (
     <>
       <Header />
-      <main className="relative z-10 h-[80%] flex items-center justify-center">{children}</main>
+      <main className="relative z-10 my-[12em] flex items-center justify-center">{children}</main>
       <Footer />
     </>
   );
