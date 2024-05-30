@@ -3,8 +3,8 @@ import TwitterIcon from "../../assets/twitter.svg";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-[#888] relative z-[10] pt-3">
-      <div className="ml-5 flex gap-[30%] items-center">
+    <footer className="border-t border-[#888] relative z-[10] py-3">
+      <div className="ml-5 flex flex-wrap gap-[30%] items-center">
         <div className="flex gap-10">
           <div>
             <a>Whitepaper</a>
