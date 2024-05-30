@@ -6,7 +6,6 @@ import { defaultWagmiConfig } from "@web3modal/wagmi/react/config";
 
 export const wagmiConfig = createConfig({
   chains: [bscTestnet, bsc],
-  connectors: [injected(), metaMask(), walletConnect({ projectId: PROJECT_ID })],
   transports: {
     [bscTestnet.id]: http(),
     [bsc.id]: http(),

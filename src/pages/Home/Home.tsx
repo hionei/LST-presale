@@ -18,6 +18,7 @@ import { getTransactionReceipt, getTransactionConfirmations, waitForTransactionR
 import { USDT_ABI } from "../../artifacts/USDT.sol/USDT";
 
 const web3 = new Web3();
+const MAIN_CHAIN = bscTestnet;
 
 const cryptos = [
   { value: "BNB", label: " BNB ", icon: BNBIcon },
@@ -60,39 +61,46 @@ const Home = () => {
     },
   });
 
-  const { data: startTime } = useReadContract({
+  const { data: startTime, error } = useReadContract({
     abi: presaleAbi,
     address: PRESALE_CONTRACT_ADDRESS,
     functionName: "startTime",
+    chainId: MAIN_CHAIN.id,
   });
+
   const { data: endTime } = useReadContract({
     abi: presaleAbi,
     address: PRESALE_CONTRACT_ADDRESS,
     functionName: "endTime",
+    chainId: MAIN_CHAIN.id,
   });
 
   const { data: currentSoldAmount } = useReadContract({
     abi: presaleAbi,
     address: PRESALE_CONTRACT_ADDRESS,
     functionName: "currentSoldAmount",
+    chainId: MAIN_CHAIN.id,
   });
 
   const { data: totalRaised } = useReadContract({
     abi: presaleAbi,
     address: PRESALE_CONTRACT_ADDRESS,
     functionName: "totalRaised",
+    chainId: MAIN_CHAIN.id,
   });
 
   const { data: presaleSupplyAmount } = useReadContract({
     abi: presaleAbi,
     address: PRESALE_CONTRACT_ADDRESS,
     functionName: "presaleSupplyAmount",
+    chainId: MAIN_CHAIN.id,
   });
 
   const { data: investorCount } = useReadContract({
     abi: presaleAbi,
     address: PRESALE_CONTRACT_ADDRESS,
     functionName: "investorCount",
+    chainId: MAIN_CHAIN.id,
   });
 
   const handleChange = (value: any) => {
@@ -128,7 +136,7 @@ const Home = () => {
 
   useEffect(() => {
     let timer: any;
-
+    console.log(startTime, endTime, error);
     if (!startTime && !endTime) return;
 
     if (Number(startTime) > currentUnixTime) {
@@ -169,6 +177,7 @@ const Home = () => {
           address: PRESALE_CONTRACT_ADDRESS,
           functionName: "getTokenAmountFromEth",
           args: [parseEther(eve.target.value)],
+          chainId: MAIN_CHAIN.id,
         });
 
         setEstimatedAmount({
@@ -197,7 +206,7 @@ const Home = () => {
             functionName: "buyTokenWithEth",
             args: [zeroAddress],
             value: parseEther(buyTokenAmount.toString()),
-            chainId: bscTestnet.id,
+            chainId: MAIN_CHAIN.id,
           });
 
           const confirmed = await waitForTransactionReceipt(wagmiConfig, { hash: result });
@@ -222,6 +231,7 @@ const Home = () => {
           address: USDT_CONTRACT_ADDRESS,
           functionName: "approve",
           args: [PRESALE_CONTRACT_ADDRESS, parseEther(buyTokenAmount.toString())],
+          chainId: MAIN_CHAIN.id,
         });
 
         const approveConfirm = await waitForTransactionReceipt(wagmiConfig, { hash: approveHash });
@@ -232,6 +242,7 @@ const Home = () => {
           address: PRESALE_CONTRACT_ADDRESS,
           functionName: "buyTokenWithCoin",
           args: [USDT_CONTRACT_ADDRESS, parseEther(buyTokenAmount.toString()), zeroAddress],
+          chainId: MAIN_CHAIN.id,
         });
 
         const signConfirm = await waitForTransactionReceipt(wagmiConfig, { hash: signHash });
